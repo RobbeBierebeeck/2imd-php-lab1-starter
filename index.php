@@ -94,7 +94,13 @@
         <span class="post__content--username"><?php echo $post["username"]?></span>
         <span class="post__content--place"><?php echo $post["place"]?></span>
         <span class="post__content--location"><?php echo $post["location"]?></span>
+
         <p class="post__content--comment"><?php echo $post["comment"]?></p>
+            <?php if(!empty($post["postImage"])){
+                echo '<img class="post__content--image" src="images/post/post1.jpg" alt="location">';
+            } ?>
+
+
         </div>
     </div>
     <?php endforeach;?>
