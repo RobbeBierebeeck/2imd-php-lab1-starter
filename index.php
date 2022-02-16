@@ -1,4 +1,63 @@
 <?php
+    $posts = [
+            [
+                    "profilePicture"=>"images/image-1.png",
+                    "username"=>"Jesse",
+                    "place"=>"Assembly3.0",
+                    "location"=>"San Francisco, CA",
+                    "comment"=>"Le Work.",
+                    "postImage"=>""
+            ],
+        [
+            "profilePicture"=>"images/image-2.png",
+            "username"=>"Michal",
+            "place"=>"Voxer",
+            "location"=>"San Francisco, CA",
+            "comment"=>"",
+            "postImage"=>"images/post/post1.jpg"
+        ],
+        [
+            "profilePicture"=>"images/image-3.png",
+            "username"=>"Petr",
+            "place"=>"ROXY/NoD",
+            "location"=>"Prague, Czech Republic",
+            "comment"=>"Le Work.",
+            "postImage"=>""
+        ],
+        [
+            "profilePicture"=>"images/image-4.png",
+            "username"=>"Jaroslav",
+            "place"=>"Brno hlavni nadrazi",
+            "location"=>"Brno, Czech Republic",
+            "comment"=>"",
+            "postImage"=>""
+        ],
+        [
+            "profilePicture"=>"images/image-5.png",
+            "username"=>"Jesse",
+            "place"=>"The Mill",
+            "location"=>"Puurs, Belgium",
+            "comment"=>"Le Work.",
+            "postImage"=>""
+        ],
+        [
+            "profilePicture"=>"images/image-6.png",
+            "username"=>"Matej",
+            "place"=>"MassVentures",
+            "location"=>"Baal, Tremelo",
+            "comment"=>"",
+            "postImage"=>""
+        ],
+        [
+            "profilePicture"=>"images/image-7.png",
+            "username"=>"Robbe",
+            "place"=>"ThomasMore",
+            "location"=>"Mechelen, Belgium",
+            "comment"=>"",
+            "postImage"=>""
+        ],
+
+    ]
     /*
         todo1: maak een multidimensionale array met daarin alle checkins zoals te zien op screenshots/screenshot1.png
             - denk na over welke data er in je array moet zitten
@@ -10,7 +69,7 @@
         todo2: werk met een constant DISTANCE waarmee je kan instellen wat de maximale afstand is om checkins voor te tonen
             - je zal in je array een extra stukje data moeten bijvoegen om deze afstand mee te betrekken in je checkins
 
-    */
+*/
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -28,24 +87,17 @@
 <?php include_once("header.inc.php")?>
     <?php // todo3 : lus over je checkins en print deze visueel af zoals op de screenshots/screenshot1.png?>
 <section class="content">
+    <?php foreach ($posts as $post): ?>
     <div class="post">
-        <img class="post__userImage" src="images/image-1.png" alt="profile picture">
+        <img class="post__userImage" src= "<?php echo $post["profilePicture"]?>" alt="profile picture">
         <div class="post__content">
-        <span class="post__content--username">Jesse</span>
-        <span class="post__content--place">Assembly3.0</span>
-        <span class="post__content--location">San Francisco, CA</span>
-        <p class="post__content--comment">LE WORK.</p>
+        <span class="post__content--username"><?php echo $post["username"]?></span>
+        <span class="post__content--place"><?php echo $post["place"]?></span>
+        <span class="post__content--location"><?php echo $post["location"]?></span>
+        <p class="post__content--comment"><?php echo $post["comment"]?></p>
         </div>
     </div>
-    <div class="post">
-        <img class="post__userImage" src="images/image-1.png" alt="profile picture">
-        <div class="post__content">
-            <span class="post__content--username">Jesse</span>
-            <span class="post__content--place">Assembly3.0</span>
-            <span class="post__content--location">San Francisco, CA</span>
-            <p class="post__content--comment">LE WORK.</p>
-        </div>
-    </div>
+    <?php endforeach;?>
 </section>
     <?php // todo4 : zorg dat je header en footer opgehaald wordt vanuit footer.inc.php en header.inc.php zodat je deze kan hergebruiken op meerdere schermen?>
     <?php include_once("footer.inc.php")?>
