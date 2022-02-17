@@ -6,7 +6,8 @@
                     "place"=>"Assembly3.0",
                     "location"=>"San Francisco, CA",
                     "comment"=>"Le Work.",
-                    "postImage"=>""
+                    "postImage"=>"",
+                "distanceInKm"=> 124,
             ],
         [
             "profilePicture"=>"images/image-2.png",
@@ -14,7 +15,8 @@
             "place"=>"Voxer",
             "location"=>"San Francisco, CA",
             "comment"=>"",
-            "postImage"=>"images/post/post1.jpg"
+            "postImage"=>"images/post/post1.jpg",
+            "distanceInKm"=> 78,
         ],
         [
             "profilePicture"=>"images/image-3.png",
@@ -22,7 +24,8 @@
             "place"=>"ROXY/NoD",
             "location"=>"Prague, Czech Republic",
             "comment"=>"Le Work.",
-            "postImage"=>""
+            "postImage"=>"",
+            "distanceInKm"=> 670,
         ],
         [
             "profilePicture"=>"images/image-4.png",
@@ -30,7 +33,8 @@
             "place"=>"Brno hlavni nadrazi",
             "location"=>"Brno, Czech Republic",
             "comment"=>"",
-            "postImage"=>""
+            "postImage"=>"",
+            "distanceInKm"=> 48,
         ],
         [
             "profilePicture"=>"images/image-5.png",
@@ -38,7 +42,8 @@
             "place"=>"The Mill",
             "location"=>"Puurs, Belgium",
             "comment"=>"Le Work.",
-            "postImage"=>""
+            "postImage"=>"",
+            "distanceInKm"=> 79,
         ],
         [
             "profilePicture"=>"images/image-6.png",
@@ -46,7 +51,8 @@
             "place"=>"MassVentures",
             "location"=>"Baal, Tremelo",
             "comment"=>"",
-            "postImage"=>""
+            "postImage"=>"",
+            "distanceInKm"=> 10,
         ],
         [
             "profilePicture"=>"images/image-7.png",
@@ -54,10 +60,13 @@
             "place"=>"ThomasMore",
             "location"=>"Mechelen, Belgium",
             "comment"=>"",
-            "postImage"=>""
+            "postImage"=>"",
+            "distanceInKm"=> 276,
         ],
 
-    ]
+    ];
+
+    $MAX_DISTANCE_KM=200;
     /*
         todo1: maak een multidimensionale array met daarin alle checkins zoals te zien op screenshots/screenshot1.png
             - denk na over welke data er in je array moet zitten
@@ -83,19 +92,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 </head>
+
 <body>
 <?php include_once("header.inc.php")?>
     <?php // todo3 : lus over je checkins en print deze visueel af zoals op de screenshots/screenshot1.png?>
 <section class="content">
     <?php foreach ($posts as $post): ?>
+      <?php  if ($MAX_DISTANCE_KM >= $post["distanceInKm"]):?>
     <div class="post">
         <img class="post__userImage" src= "<?php echo $post["profilePicture"]?>" alt="profile picture">
         <div class="post__content">
-        <span class="post__content--username"><?php echo $post["username"]?></span>
-        <span class="post__content--place"><?php echo $post["place"]?></span>
-        <span class="post__content--location"><?php echo $post["location"]?></span>
+            <span class="post__content--username"><?php echo $post["username"]?></span>
+            <span class="post__content--place"><?php echo $post["place"]?></span>
+            <span class="post__content--location"><?php echo $post["location"]?></span>
 
-        <p class="post__content--comment"><?php echo $post["comment"]?></p>
+            <p class="post__content--comment"><?php echo $post["comment"]?></p>
             <?php if(!empty($post["postImage"])){
                 echo '<img class="post__content--image" src="images/post/post1.jpg" alt="location">';
             } ?>
@@ -103,7 +114,10 @@
 
         </div>
     </div>
-    <?php endforeach;?>
+<?php endif; ?>
+<?php endforeach;?>
+
+
 </section>
     <?php // todo4 : zorg dat je header en footer opgehaald wordt vanuit footer.inc.php en header.inc.php zodat je deze kan hergebruiken op meerdere schermen?>
     <?php include_once("footer.inc.php")?>
